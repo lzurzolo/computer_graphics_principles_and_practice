@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Canvas ClipToBounds="True">
+        <Canvas.RenderTransform>
+            <TransformGroup>
+                <!-- WPF units are 1/96 of an inch, scale the clock face size (20) to be an inch-->
+                <ScaleTransform ScaleX="4.8" ScaleY="4.8" CenterX="0" CenterY="0"/>
+            </TransformGroup>
+        </Canvas.RenderTransform>
+
+
         <Ellipse Canvas.Left="-10" Canvas.Top="-10" Width="20" Height="20" Fill="LightGray"/>
     </Canvas>
 </Window>
