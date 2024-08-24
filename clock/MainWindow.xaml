@@ -5,9 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:clock"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Canvas ClipToBounds="True">
-        <Ellipse Canvas.Left="0" Canvas.Top="0" Width="20" Height="20" Fill="LightGray"/>
+        Title="Clock" Height="112" Width="96">
+    <Canvas ClipToBounds="False">
+        <Canvas.Resources>
+            <ControlTemplate x:Key="ClockHandTemplate">
+                <Polygon Points="-0.3,-1 -0.2,8 0,9 0.2,8 0.3,-1" Fill="Navy"/>
+            </ControlTemplate>
+            <ControlTemplate x:Key="SecondHandTemplate">
+                <Polygon Points="-0.3,-1 -0.2,8 0,9 0.2,8 0.3,-1" Fill="Red"/>
+            </ControlTemplate>
+        </Canvas.Resources>
+        
+        
+        
+        <!-- Clock face -->
+        <Ellipse x:Name="clockFace" Canvas.Left="-10" Canvas.Top="-10" Width="20" Height="20" Fill="LightGray"/>
+        
+        <!-- Second Hand -->
+        <Control Name="SecondHand" Template="{StaticResource SecondHandTemplate}">
+            <Control.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.4" ScaleY="1" CenterX="0" CenterY="0"/>
+                    <RotateTransform Angle="-180" CenterX="0" CenterY="0"/>
+                </TransformGroup>
+            </Control.RenderTransform>
+        </Control>
+
+
+        <!-- Minute Hand -->
+        <Control Name="MinuteHand" Template="{StaticResource ClockHandTemplate}">
+            <Control.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="-270" CenterX="0" CenterY="0"/>
+                </TransformGroup>
+            </Control.RenderTransform>
+        </Control>
+
+        <!-- Hour Hand -->
+        <Control Name="HourHand" Template="{StaticResource ClockHandTemplate}">
+            <Control.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.7" ScaleY="0.7" CenterX="0" CenterY="0"/>
+                    <RotateTransform Angle="-140" CenterX="0" CenterY="0"/>
+                </TransformGroup>
+            </Control.RenderTransform>
+        </Control>
+
+        <!-- Display transform -->
         <Canvas.RenderTransform>
             <TransformGroup>
                 <!-- WPF units are 1/96 of an inch, scale the canvas so that the clock face size (20) is an inch-->
