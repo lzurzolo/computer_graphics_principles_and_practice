@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:clock"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <Canvas ClipToBounds="True">
+        <Ellipse Canvas.Left="-10" Canvas.Top="-10" Width="20" Height="20" Fill="LightGray"/>
+    </Canvas>
 </Window>
